@@ -25,13 +25,6 @@ To cite the work:
 4. cmake ../
 5. make
 
-### Running the first example
-1. Set the ```repo_path``` in files ```model_preprocess.cpp``` and ```stocs_match_one_object.cpp```
-2. Preprocess the 3d model
-```./build/model_preprocess "024_bowl"```
-3. Run pose estimation
-```./build/stocs_single "{path_to_repo}/examples/ycb/" "024_bowl"```
-
 ### Inputs
 1. RGB and depth images
 2. Per-pixel object class probability (scaled by 10000). Can be set as a constant mask.
@@ -39,3 +32,34 @@ To cite the work:
 ### Outputs
 1. ```best_pose_candidate_{object_name}``` 6D pose of the object (3 rows of the transformation matrix) stored in row-major order.
 2. ```best_pose.ply``` and ```scene.ply``` visualization of the transformed object model and the scene.
+
+### Running the first example
+1. Set the ```repo_path``` in files ```model_preprocess.cpp``` and ```stocs_match_one_object.cpp```
+2. Preprocess the 3d model
+```./build/model_preprocess "024_bowl"```
+3. Run pose estimation
+```./build/stocs_single "{path_to_repo}/examples/ycb/" "024_bowl"```
+
+### Running on Packed-dataset 
+1. Change the following parameters in the file ```model_preprocess.cpp```
+```float voxel_size = 0.005;```
+
+2. Change the following parameters in the file ```stocs_match_one_object.cpp```
+```
+std::vector<float> cam_intrinsics = {615.957763671875, 308.1098937988281, 615.9578247070312, 246.33352661132812};
+float depth_scale = 1/8000.0f;
+```
+
+### Running on Linemod
+1. Change the following parameters in the file ```model_preprocess.cpp```
+```
+float voxel_size = 10;
+float normal_radius = 5;
+float model_scale = 1.0f/1000;
+```
+
+2. Change the following parameters in the file ```stocs_match_one_object.cpp```
+```
+std::vector<float> cam_intrinsics = {572.4114, 325.2611, 573.57043, 242.04899};
+float depth_scale = 1/1000.0f;
+```
