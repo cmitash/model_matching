@@ -1,7 +1,7 @@
 # Model-Matching
 This software tool could be used to obtain robust 6d poses of objects with 3d point cloud models in the presence of noisy segmentation data
 
-#### Robust 6D Object Pose Estimation with Stochastic Congruent Sets ([pdf](http://bmvc2018.org/contents/papers/1046.pdf))([website](http://paul.rutgers.edu/~cm1074/)
+#### Robust 6D Object Pose Estimation with Stochastic Congruent Sets ([pdf](http://bmvc2018.org/contents/papers/1046.pdf))([website](http://paul.rutgers.edu/~cm1074/))
 By Chaitanya Mitash, Abdeslam Boularias, Kostas Bekris (Rutgers University).
 
 In Proceedings of British Machine Vision Conference (BMVC), Newcastle, England, UK, 2018
