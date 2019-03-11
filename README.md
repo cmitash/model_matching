@@ -27,7 +27,7 @@ To cite the work:
 
 ### Inputs
 1. RGB and depth images
-2. Per-pixel object class probability (scaled by 10000). Can be set as a constant mask.
+2. Per-pixel object class probability (scaled to range 0-10000 and stored as uint16). Can be set as a constant mask if probability is not available.
 
 ### Outputs
 1. ```best_pose_candidate_{object_name}``` 6D pose of the object (3 rows of the transformation matrix) stored in row-major order.
