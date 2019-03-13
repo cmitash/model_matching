@@ -18,6 +18,10 @@ To cite the work:
 }
 ```
 
+### Dependency:
+1. OpenCV
+2. PCL
+
 ### Installation
 1. Download the repository.
 2. mkdir build
