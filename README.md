@@ -18,7 +18,7 @@ To cite the work:
 }
 ```
 
-### Dependency:
+### Dependency
 1. OpenCV
 2. PCL
 
