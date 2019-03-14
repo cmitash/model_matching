@@ -140,6 +140,7 @@ struct Quadrilateral {
 
 class PoseCandidate {
   public:
+    EIGEN_MAKE_ALIGNED_OPERATOR_NEW
     Eigen::Matrix4f transform;
     float lcp;
     int base_index;
