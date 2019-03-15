@@ -266,7 +266,7 @@ load_rgbd_data_sampled(std::string rgb_location,
     Eigen::Vector3f point2D = mat * Eigen::Vector3f(pt.x, pt.y, pt.z);
     int col = point2D[0]/point2D[2];
     int row = point2D[1]/point2D[2];
-
+    
     float class_probability = (float)class_probability_map.at<unsigned short>(row,col)*(1.0/10000);
     float edge_probability = (float)(255.0 - edge_probability_map.at<unsigned char>(row,col))/255.0;
 

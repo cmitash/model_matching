@@ -1,6 +1,6 @@
 #include <stocs.hpp>
 
-std::string repo_path = "/media/chaitanya/DATADRIVE0/github/model_matching";
+std::string repo_path = "/media/bowen/e25c9489-2f57-42dd-b076-021c59369fec/github/stocs";
 
 // All values in m
 float voxel_size = 0.01;
@@ -23,7 +23,7 @@ main (int argc, char** argv) {
 	std::string model_path = repo_path + "/models/" + object_name;
 
 	system(("rm -rf " + model_path + "/model_search.ply").c_str());
-	system(("rm -rf " + model_path + "/ppf_map.ply").c_str());
+	system(("rm -rf " + model_path + "/ppf_map.txt").c_str());
 
 	stocs::pre_process_model(model_path + "/textured_vertices.ply",
 							normal_radius,

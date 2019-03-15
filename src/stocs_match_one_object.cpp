@@ -1,6 +1,7 @@
 #include <stocs.hpp>
 #include <pose_clustering.hpp>
 
+// std::string repo_path = "/media/bowen/e25c9489-2f57-42dd-b076-021c59369fec/github/stocs";
 std::string repo_path = "/media/chaitanya/DATADRIVE0/github/model_matching";
 
 // rgbd parameters
@@ -17,6 +18,8 @@ int number_of_bases = 100;
 int maximum_congruent_sets = 200;
 
 // camera parameters
+// std::vector<float> cam_intrinsics = {619.2578, 320, 619.2578, 240}; //YCB
+// float depth_scale = 1/1000.0f;
 std::vector<float> cam_intrinsics = {1066.778, 312.986, 1067.487, 241.310}; //YCB
 float depth_scale = 1/10000.0f;
 
@@ -168,13 +171,20 @@ void run_stocs_estimation(std::string scene_path,
     PoseCandidate* best_pose = stocs_ptr.get_best_pose();
 
     // store the clustered poses
-	std::ofstream out_file_ptr;
-	out_file_ptr.open (output_pose_file, std::ofstream::out);
-    out_file_ptr << best_pose->transform(0, 0) << " " << best_pose->transform(0, 1) << " " << best_pose->transform(0, 2) << " " << best_pose->transform(0, 3) << " " << 
-                best_pose->transform(1, 0) << " " << best_pose->transform(1, 1) << " " << best_pose->transform(1, 2) << " " << best_pose->transform(1, 3) << " " << 
-                best_pose->transform(2, 0) << " " << best_pose->transform(2, 1) << " " << best_pose->transform(2, 2) << " " << best_pose->transform(2, 3) << std::endl;
+	if (best_pose!=NULL)
+	{
+		std::ofstream out_file_ptr;
+		out_file_ptr.open (output_pose_file, std::ofstream::out);
+		out_file_ptr << best_pose->transform(0, 0) << " " << best_pose->transform(0, 1) << " " << best_pose->transform(0, 2) << " " << best_pose->transform(0, 3) << " " << 
+					best_pose->transform(1, 0) << " " << best_pose->transform(1, 1) << " " << best_pose->transform(1, 2) << " " << best_pose->transform(1, 3) << " " << 
+					best_pose->transform(2, 0) << " " << best_pose->transform(2, 1) << " " << best_pose->transform(2, 2) << " " << best_pose->transform(2, 3) << std::endl;
 
-    out_file_ptr.close();
+		out_file_ptr.close();
+	}
+	else
+	{
+		std::cout<<"no pose found"<<std::endl;
+	}
 }
 
 int
