@@ -1,6 +1,6 @@
 #include <stocs.hpp>
 
-std::string repo_path = "/media/bowen/e25c9489-2f57-42dd-b076-021c59369fec/github/stocs";
+std::string repo_path = "/media/chaitanya/DATADRIVE0/github/model_matching";
 
 // All values in m
 float voxel_size = 0.01;
