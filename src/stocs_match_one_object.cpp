@@ -202,7 +202,7 @@ main (int argc, char** argv) {
 
 	// load PPF map
 	PPFMapType model_map;
-    std::string model_map_path = repo_path + "/models/" + object_name + "/ppf_map.txt";
+    std::string model_map_path = repo_path + "/models/" + object_name + "/ppf_map";
     rgbd::load_ppf_map(model_map_path, model_map);
 
     std::cout << "############# LOADING OBJECT COMPLETE ################" << std::endl;

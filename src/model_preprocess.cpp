@@ -23,7 +23,7 @@ main (int argc, char** argv) {
 	std::string model_path = repo_path + "/models/" + object_name;
 
 	system(("rm -rf " + model_path + "/model_search.ply").c_str());
-	system(("rm -rf " + model_path + "/ppf_map.txt").c_str());
+	system(("rm -rf " + model_path + "/ppf_map").c_str());
 
 	stocs::pre_process_model(model_path + "/textured_vertices.ply",
 							normal_radius,
@@ -33,7 +33,7 @@ main (int argc, char** argv) {
 							ppf_tr_discretization,
 							ppf_rot_discretization,
 							model_path + "/model_search.ply",
-							model_path + "/ppf_map.txt");
+							model_path + "/ppf_map");
 
  	return 0;
 }

@@ -1,6 +1,10 @@
 #include <iostream>
 #include <fstream>
-
+#include <boost/serialization/map.hpp>
+#include <boost/serialization/vector.hpp>
+#include <boost/serialization/utility.hpp>
+#include <boost/archive/binary_iarchive.hpp>
+#include <boost/archive/binary_oarchive.hpp>
 #include <rgbd.hpp>
 
 namespace rgbd {
@@ -153,43 +157,23 @@ void
 save_ppf_map(std::string location,
             std::map<std::vector<int>, std::vector<std::pair<int, int> > > &ppf_map) {
 
-  auto it = ppf_map.begin();
-  while (it!=ppf_map.end()){
-    std::ofstream ptr_file;
-    ptr_file.open (location, std::ofstream::out | std::ofstream::app);
-    ptr_file << it->first[0] << " " << it->first[1] << " " << it->first[2] << " " << it->first[3] << " " << it->second.size() << " ";
-    
-    for (int ii=0; ii<it->second.size(); ii++) {
-      ptr_file << it->second[ii].first << " " << it->second[ii].second << " ";
-    }
-
-    ptr_file << '\n';
-    ptr_file.close();
-    it++;
-  }
+  std::ofstream f(location, std::ios::binary);
+  if (f.fail()) return;
+  boost::archive::binary_oarchive oa(f); 
+  oa << ppf_map; 
 }
 
 void
 load_ppf_map(std::string ppf_map_location,
             std::map<std::vector<int>, std::vector<std::pair<int, int> > > &ppf_map) {
 
-  std::ifstream ppf_file;
-  std::vector<int> ppf_feature(4);
-  std::vector<std::pair<int,int> > index_pairs;
-  int index1, index2;
-  int pair_count;
-
-  ppf_file.open (ppf_map_location, std::ofstream::in);
-
-  while(ppf_file >> ppf_feature[0] >> ppf_feature[1] >> ppf_feature[2] >> ppf_feature[3] >> pair_count){
-    index_pairs.clear();
-    for(int ii=0; ii<pair_count; ii++){
-      ppf_file >> index1 >> index2;
-      index_pairs.push_back(std::make_pair(index1, index2));
-    }
-    ppf_map.insert (std::pair<std::vector<int>, std::vector<std::pair<int,int> > >(ppf_feature, index_pairs));
-  }
+  std::ifstream ppf_file(ppf_map_location, std::ios::binary);
+  std::stringstream s;
+  s << ppf_file.rdbuf();  
   ppf_file.close();
+  boost::archive::binary_iarchive iarch(s);
+  iarch >> ppf_map;
+
 }
 
 void
