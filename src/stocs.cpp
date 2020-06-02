@@ -2,6 +2,7 @@
 
 #include <boost/functional/hash.hpp>
 
+#include <random>
 #include "Eigen/Core"
 #include "Eigen/Geometry"                 // MatrixBase.homogeneous()
 #include "Eigen/SVD"                      // Transform.computeRotationScaling()
