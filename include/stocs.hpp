@@ -6,7 +6,7 @@
 #include "Eigen/Dense"
 
 using Scalar = typename Point3D::Scalar;
-using MatrixType = Eigen::Matrix<Scalar, 4, 4>;
+using MatrixType = Eigen::Matrix<Scalar, 4, 4, Eigen::DontAlign>;
 using VectorType = typename Point3D::VectorType;
 
 static constexpr Scalar kLargeNumber = 1e9;

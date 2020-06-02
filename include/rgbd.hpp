@@ -51,7 +51,7 @@ save_as_ply(std::string location,
 void
 transform_pointset(std::vector<Point3D>& input,
                   std::vector<Point3D>& output,
-                  Eigen::Matrix<Point3D::Scalar, 4, 4> &transform);
+                  const Eigen::Matrix<Point3D::Scalar, 4, 4> &transform);
 
 void
 compute_normal_pcl(pcl::PointCloud<pcl::PointXYZRGBNormal>::Ptr cloud,
